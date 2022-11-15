@@ -105,3 +105,4 @@ deploy:
   type: git
   repo: https://github.com/Ststone1687/Ststone1687.github.io.git # 你的儲存庫 clone
   branch: master # 儲存庫分支
+  message: "traditional chinese"

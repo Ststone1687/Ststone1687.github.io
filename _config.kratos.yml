@@ -260,4 +260,7 @@ friends:
   #   bio: "咪啪~"
   #   avatar: "../images/avatar.webp"
   #   link: "https://candinya.com"
-  verify: true # 验证每个友链的可访问性，炸了会有提示
+  verify: true 
+
+katex:
+  enable：true
