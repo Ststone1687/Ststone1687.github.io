@@ -1,0 +1,434 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+    <head>
+  <!-- 元数据 -->
+  <meta charset="utf-8">
+  <link rel="icon" href="https://media.discordapp.net/attachments/713379026487476235/804691023137079316/ee4529dfeb9f50056e09ef9ac96b3c90.png">
+  
+  <title>yukicoder No.2082 AND OR XOR 解題心得 | Ststone的廢文專區</title>
+  <meta name="author" content="Ststone" />
+  <meta http-equiv="Cache-Control" content="no-transform" />
+  <meta http-equiv="Cache-Control" content="no-siteapp" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="robots" content="index,follow" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+  <meta name="format-detection" content="telphone=no, email=no" />
+  
+    <meta name="keywords" content="dp, yukicoder" />
+  
+  <meta name="description" content="題目名稱：AND OR XOR題目敘述對於非負整數的 $a,b$ ，定義一個二元運算子 $*$ 。  $x * y &#x3D; (A×(x$ $AND$ $y)+B×(x$ $OR$ $y)+C×(x$ $XOR$ $y))$ $mod$ $4$長度為 $N$ 的數列 $X$ 如果滿足以下條件則被稱作 好的數列 。 每一項都由 $0,1,2,3$ 組成。 $(…((X_1*X_2)X_3)…)X">
+<meta property="og:type" content="article">
+<meta property="og:title" content="yukicoder No.2082 AND OR XOR 解題心得">
+<meta property="og:url" content="http://example.com/2022/10/19/yukicoder/yukicoder2082/index.html">
+<meta property="og:site_name" content="Ststone的廢文專區">
+<meta property="og:description" content="題目名稱：AND OR XOR題目敘述對於非負整數的 $a,b$ ，定義一個二元運算子 $*$ 。  $x * y &#x3D; (A×(x$ $AND$ $y)+B×(x$ $OR$ $y)+C×(x$ $XOR$ $y))$ $mod$ $4$長度為 $N$ 的數列 $X$ 如果滿足以下條件則被稱作 好的數列 。 每一項都由 $0,1,2,3$ 組成。 $(…((X_1*X_2)X_3)…)X">
+<meta property="og:locale" content="zh_TW">
+<meta property="og:image" content="https://media.discordapp.net/attachments/713379026487476235/804691023137079316/ee4529dfeb9f50056e09ef9ac96b3c90.png">
+<meta property="article:published_time" content="2022-10-18T16:00:00.000Z">
+<meta property="article:modified_time" content="2022-11-15T04:16:42.108Z">
+<meta property="article:author" content="Ststone">
+<meta property="article:tag" content="yukicoder">
+<meta property="article:tag" content="dp">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://media.discordapp.net/attachments/713379026487476235/804691023137079316/ee4529dfeb9f50056e09ef9ac96b3c90.png">
+<meta name="twitter:site" content="@chi_guai">
+  
+  <!-- 站点验证相关 -->
+  
+    
+    
+    
+  
+  <!-- 样式表文件 -->
+  <link rel="stylesheet" id="kratos-css" href="/css/kratosr.min.css" media="all"></script>
+  
+    <link rel="stylesheet" id="darkmode-css" href="/css/kr-color-dark.min.css" media="(prefers-color-scheme: dark)"></script>
+    <script src="/js/kr-dark.min.js"></script>
+  
+  
+    <link rel="stylesheet" id="highlight-css" href="/css/highlight/night-eighties.min.css" media="all"></script>
+  
+  
+  <link rel="stylesheet" id="fontawe-css" href="/vendors/font-awesome@4.7.0/css/font-awesome.min.css" media="all"></script>
+  <link rel="stylesheet" id="nprogress-css" href="/vendors/nprogress@0.2.0/nprogress.css" media="all"></script>
+  
+  
+  
+    <link rel="stylesheet" href="/vendors/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css"></script>
+  
+  <!-- 不得不预先加载的一些JS文件 -->
+  <script src="/vendors/jquery@3.6.0/dist/jquery.min.js"></script>
+  
+  
+  <style>
+    
+      .kratos-cover.kratos-cover-2 {
+        background-image: url('https://media.discordapp.net/attachments/713379026487476235/1041582255824449576/banner.png?width=1440&height=360');
+      }
+    
+    
+      @media(min-width:768px) {
+        body.custom-background {
+          background-image: url('https://media.discordapp.net/attachments/713379026487476235/1041576240924069949/chino-np.png?width=1178&height=662');
+        }
+      }
+    
+  </style>
+  
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+
+    <body class="custom-background">
+        <div id="kratos-wrapper">
+    <div id="kratos-page">
+        <div id="kratos-header">
+            <header id="kratos-desktop-topnav" class="kratos-topnav">
+                <div class="container">
+                    <div class="nav-header">
+                        <nav id="kratos-menu-wrap">
+                            <ul id="kratos-primary-menu" class="sf-menu">
+                                
+                                    
+                                        <li>
+                                            
+                                                <a href="/">
+                                            
+                                                
+                                                    <i class="fa fa-home"></i>
+                                                
+                                                首頁
+                                            </a>
+                                            
+                                        </li>
+                                    
+                                        <li>
+                                            
+                                                <a href="/test/">
+                                            
+                                                
+                                                    <i class="fa fa-test"></i>
+                                                
+                                                測試
+                                            </a>
+                                            
+                                        </li>
+                                    
+                                
+                            </ul>
+                        </nav>
+                    </div>
+                </div>
+            </header>
+            <header id="kratos-mobile-topnav" class="kratos-topnav">
+                <div class="container">
+                    <div class="color-logo"><a href="/">Ststone的廢文專區</a></div>
+                    <div class="nav-toggle">
+                        <a class="kratos-nav-toggle js-kratos-nav-toggle">
+                            <i></i>
+                        </a>
+                    </div>
+                </div>
+            </header>
+        </div>
+        <div class="kratos-start kratos-hero-2">
+            <!-- <div class="kratos-overlay"></div> -->
+            <div class="kratos-cover kratos-cover-2 text-center">
+                <div class="desc desc2 animate-box">
+                    <a href="/">
+                        <h2>Ststone的廢文專區</h2> <br />
+                        <span></span>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <div id="kratos-blog-post">
+            <div class="container">
+                <div id="main" class="row">
+                    
+
+        
+
+            <section class="col-md-8">
+
+        
+
+            <article itemscope itemtype="https://schema.org/Article">
+    
+    <link itemprop="mainEntityOfPage" href="http://example.com/2022/10/19/yukicoder/yukicoder2082/">
+    <div class="kratos-hentry kratos-post-inner clearfix">
+        <header class="kratos-entry-header">
+            
+                <h1 class="kratos-entry-title text-center" itemprop="name headline">yukicoder No.2082 AND OR XOR 解題心得</h1>
+            
+            
+            <ul class="kratos-post-meta text-center">
+                <li><time datetime="2022-10-18T16:00:00.000Z" itemprop="datePublished"><i class="fa fa-calendar"></i> 2022-10-19</time></li>
+                <li itemprop="author" itemscope itemtype="https://schema.org/Person">
+                    <i class="fa fa-user"></i> 作者 <span itemprop="name">Ststone</span>
+                </li>
+                <li>
+                    <i class="fa fa-edit"></i> 
+                    
+                    
+                        ~3.69K
+                    
+                    字
+                </li>
+                
+            </ul>
+        </header>
+        <div class="kratos-post-content">
+            
+            <div id="expire-alert" class="alert alert-warning hidden" role="alert">
+                <div class="icon"><i class="fa fa-warning"></i></div>
+                <div class="text"><p>本文最後編輯於 <time datetime="1668485802108"></time> 前，其中的內容可能需要更新。</p></div>
+            </div>
+            
+            
+            
+            <hr />
+            <div itemprop="articleBody"><h1 id="題目名稱：AND-OR-XOR"><a href="#題目名稱：AND-OR-XOR" class="headerlink" title="題目名稱：AND OR XOR"></a>題目名稱：<a target="_blank" rel="noopener" href="https://yukicoder.me/problems/no/2082">AND OR XOR</a></h1><h3 id="題目敘述"><a href="#題目敘述" class="headerlink" title="題目敘述"></a>題目敘述</h3><p>對於非負整數的 $a,b$ ，定義一個二元運算子 $*$ 。</p>
+<ul>
+<li>$x * y &#x3D; (A×(x$ $AND$ $y)+B×(x$ $OR$ $y)+C×(x$ $XOR$ $y))$ $mod$ $4$<br>長度為 $N$ 的數列 $X$ 如果滿足以下條件則被稱作 <strong>好的數列</strong> 。</li>
+<li>每一項都由 $0,1,2,3$ 組成。</li>
+<li>$(…((X_1*X_2)<em>X_3)</em>…)<em>X_N &#x3D; (…((X_N</em>X_{N-1})<em>X_{N-2})</em>…)*X_1$ 成立。<br>求 <strong>好的數列</strong> 的個數，由於答案可能會很大，所以請取除以 $998244353 $的餘數後出。</li>
+</ul>
+<h3 id="想法"><a href="#想法" class="headerlink" title="想法"></a>想法</h3><p>這個問題可以用dp來處理，雖然 $N&#x3D;5000$ ，但是這題的複雜度不是 $O(N^2)$ 而是 $O(N×4^5)$ 。<br>首先可以定義三個數列$P,X,R$，$X$代表任意的 <strong>好的數列</strong> ，然後滿足：<br>$1.$ $P_{i-1} * X_i &#x3D; P_i$<br>$2.$ $R_i * X_i &#x3D; R_{i-1}$<br>假設 $(…((X_1<em>X_2)<em>X_3)</em>…)<em>X_N &#x3D; Y$ ，接著窮舉 $Y$ 。<br>而若 $R_1 &#x3D; P_N &#x3D; Y$ ，則 $(…((X_1</em>X_2)<em>X_3)</em>…)<em>X_N &#x3D; (…((X_N</em>X_{N-1})<em>X_{N-2})</em>…)<em>X_1$ 成立。<br>於是可以定義狀態 $dp[i][j][k]$ 代表在位置 $i$ 時， $P_i&#x3D;j$ 且 $R_i&#x3D;k$ 有解。<br>因為 $P_1</em>X_2 &#x3D; P_2$ 且 $R_2</em>X_2 &#x3D; R_1$ ，且 $R_1 &#x3D; Y$ ，然後可以列出初始狀態：<br>$dp[1][j][k] &#x3D; \begin{cases}1 &amp; ,  j*k&#x3D;Y \ 0 &amp; , Otherwise \end{cases}$<br>接著可以列出轉移 $dp[i][P_i][R_i] &#x3D; \sum \begin{cases}dp[i-1][P_{i-1}][R_{i-1}] &amp; ,  P_{i-1}*X_{i}&#x3D;P_{i} \quad and \quad R_{i}*X_{i}&#x3D;R_{i-1} \ 0 &amp; ,  Otherwise \end{cases}$<br>因為 $P_{N-1}*X_N &#x3D; P_N$ 且 $R_{N}*X_N &#x3D; R_{N-1}$ ，且 $P_N &#x3D; Y$ 。<br>所以最後需要檢查所有的 $P_{N-1} * R_{N-1} &#x3D; Y$ ，把滿足條件的 $dp[N-1][P_{N-1}][R_{N-1}]$ 加起來就會是答案了。</p>
+<h3 id="程式碼"><a href="#程式碼" class="headerlink" title="程式碼"></a>程式碼</h3><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"><span class="keyword">typedef</span> <span class="type">long</span> <span class="type">long</span> ll;</span><br><span class="line"><span class="keyword">typedef</span> string str;</span><br><span class="line"><span class="keyword">typedef</span> pair&lt;ll,ll&gt; pii;</span><br><span class="line"><span class="meta">#<span class="keyword">define</span> F first</span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> S second</span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> pb push_back</span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> pq priority_queue</span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> all(x) (x).begin(),(x).end()</span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> bug(x) cerr &lt;&lt; (x) &lt;&lt; <span class="string">&#x27;\n&#x27;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> yn(x) cout &lt;&lt; (x==1?<span class="string">&quot;Yes\n&quot;</span>:<span class="string">&quot;No\n&quot;</span>)</span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> PI 3.14159265358979323</span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> Ststone ios_base::sync_with_stdio(0);cin.tie(0);cout.tie(0)</span></span><br><span class="line"><span class="type">const</span> ll max_n=<span class="number">2e5</span>+<span class="number">20</span>,max_int=<span class="number">2147483647</span>,mod1=<span class="number">1e9</span>+<span class="number">7</span>,mod2=<span class="number">998244353</span>;</span><br><span class="line">ll dx[<span class="number">8</span>] = &#123;<span class="number">1</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">-1</span>,<span class="number">1</span>,<span class="number">1</span>,<span class="number">-1</span>,<span class="number">-1</span>&#125;;</span><br><span class="line">ll dy[<span class="number">8</span>] = &#123;<span class="number">0</span>,<span class="number">1</span>,<span class="number">-1</span>,<span class="number">0</span>,<span class="number">1</span>,<span class="number">-1</span>,<span class="number">1</span>,<span class="number">-1</span>&#125;;</span><br><span class="line">ll t,n,q,m,a,b,c,d,e,dp[<span class="number">5010</span>][<span class="number">10</span>][<span class="number">10</span>],ans=<span class="number">0</span>;</span><br><span class="line">vector&lt;ll&gt; v,v1,v2,v3,v4;</span><br><span class="line"><span class="type">char</span> cc;</span><br><span class="line">str s;</span><br><span class="line"></span><br><span class="line"><span class="function">ll <span class="title">f</span><span class="params">(ll x,ll y)</span></span>&#123;</span><br><span class="line">    <span class="keyword">return</span> ((a*(x&amp;y))+(b*(x|y))+(c*(x^y)))%<span class="number">4</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">solve</span><span class="params">()</span></span>&#123;</span><br><span class="line">    cin &gt;&gt; n;</span><br><span class="line">    cin &gt;&gt; a &gt;&gt; b &gt;&gt; c;</span><br><span class="line">    <span class="keyword">for</span>(ll goal=<span class="number">0</span>;goal&lt;<span class="number">4</span>;goal++)&#123;</span><br><span class="line">        <span class="keyword">for</span>(ll i=<span class="number">0</span>;i&lt;<span class="number">5010</span>;i++)&#123;</span><br><span class="line">            <span class="keyword">for</span>(ll j=<span class="number">0</span>;j&lt;<span class="number">4</span>;j++)&#123;</span><br><span class="line">                <span class="keyword">for</span>(ll k=<span class="number">0</span>;k&lt;<span class="number">4</span>;k++)&#123;</span><br><span class="line">                    dp[i][j][k] = <span class="number">0</span>;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">for</span>(ll i=<span class="number">0</span>;i&lt;<span class="number">4</span>;i++)&#123;</span><br><span class="line">            <span class="keyword">for</span>(ll j=<span class="number">0</span>;j&lt;<span class="number">4</span>;j++)&#123;</span><br><span class="line">                <span class="keyword">if</span>(<span class="built_in">f</span>(i,j)==goal)</span><br><span class="line">                    dp[<span class="number">1</span>][i][j] = <span class="number">1</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">for</span>(ll i=<span class="number">2</span>;i&lt;n;i++)&#123;</span><br><span class="line">            <span class="keyword">for</span>(ll s1=<span class="number">0</span>;s1&lt;<span class="number">4</span>;s1++)&#123;</span><br><span class="line">                <span class="keyword">for</span>(ll s2=<span class="number">0</span>;s2&lt;<span class="number">4</span>;s2++)&#123;</span><br><span class="line">                    <span class="keyword">for</span>(ll r1=<span class="number">0</span>;r1&lt;<span class="number">4</span>;r1++)&#123;</span><br><span class="line">                        <span class="keyword">for</span>(ll r2=<span class="number">0</span>;r2&lt;<span class="number">4</span>;r2++)&#123;</span><br><span class="line">                            <span class="keyword">for</span>(ll ak=<span class="number">0</span>;ak&lt;<span class="number">4</span>;ak++)&#123;</span><br><span class="line">                                <span class="keyword">if</span>(<span class="built_in">f</span>(s1,ak)==s2&amp;&amp;<span class="built_in">f</span>(r2,ak)==r1)&#123;</span><br><span class="line">                                    dp[i][s2][r2] += dp[i<span class="number">-1</span>][s1][r1];</span><br><span class="line">                                    dp[i][s2][r2] %= mod2;</span><br><span class="line">                                &#125;</span><br><span class="line">                            &#125;</span><br><span class="line">                        &#125;</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">for</span>(ll i=<span class="number">0</span>;i&lt;<span class="number">4</span>;i++)&#123;</span><br><span class="line">            <span class="keyword">for</span>(ll j=<span class="number">0</span>;j&lt;<span class="number">4</span>;j++)&#123;</span><br><span class="line">                <span class="keyword">if</span>(<span class="built_in">f</span>(i,j)==goal)</span><br><span class="line">                    ans +=  dp[n<span class="number">-1</span>][i][j];</span><br><span class="line">                    ans %= mod2;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    cout &lt;&lt; ans &lt;&lt; <span class="string">&#x27;\n&#x27;</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    Ststone;</span><br><span class="line">    <span class="built_in">solve</span>();</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<hr>
+<script type="text/x-mathjax-config">
+      MathJax.Hub.Config({tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}});
+</script>
+<script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+<hr>
+</div>
+        </div>
+        
+        <footer class="kratos-entry-footer clearfix">
+            
+            <div class="footer-tag clearfix">
+                <div class="pull-left">
+                <i class="fa fa-tags"></i>
+                    <a class="tag-none-link" href="/tags/dp/" rel="tag">dp</a>, <a class="tag-none-link" href="/tags/yukicoder/" rel="tag">yukicoder</a>
+                </div>
+                <div class="pull-date">
+                    <time datetime="2022-11-15T04:16:42.108Z" itemprop="dateModified">最後編輯：2022-11-15</time>
+                </div>
+            </div>
+        </footer>
+    </div>
+    
+        <nav class="navigation post-navigation clearfix" role="navigation">
+            
+            <div class="nav-previous clearfix">
+                <a title=" yukicoder No.2101 [Cherry Alpha N] ずっとこの数列だったらいいのに 解題心得" href="/2022/10/18/yukicoder/yukicoder2101/">&lt; 上一篇</a>
+            </div>
+            
+            
+            <div class="nav-next clearfix">
+                <a title=" 網站測試" href="/2022/11/14/test/2022.11.14-test/">下一篇 &gt;</a>
+            </div>
+            
+        </nav>
+    
+    
+</article>
+
+        
+
+            </section>
+
+        
+
+                
+            
+
+<section id="kratos-widget-area" class="col-md-4 hidden-xs hidden-sm">
+    <!-- 文章和页面根据splitter来分割，没有的话就从头开始设置为sticky -->
+    
+    
+                <aside id="krw-about" class="widget widget-kratos-about clearfix">
+    <div class="photo-background"></div>
+    <div class="photo-wrapper clearfix">
+        <div class="photo-wrapper-tip text-center">
+            <img class="about-photo" src="https://media.discordapp.net/attachments/713379026487476235/804691023137079316/ee4529dfeb9f50056e09ef9ac96b3c90.png" loading="lazy" decoding="auto" />
+        </div>
+    </div>
+    <div class="textwidget">
+        <p class="text-center"></p>
+    </div>
+    <div class="site-meta">
+        <a class="meta-item" href="/archives/">
+            <span class="title">
+                文章
+            </span>
+            <span class="count">
+                3
+            </span>
+        </a>
+        <a class="meta-item" href="/categories/">
+            <span class="title">
+                分類
+            </span>
+            <span class="count">
+                2
+            </span>
+        </a>
+        <a class="meta-item" href="/tags/">
+            <span class="title">
+                標籤
+            </span>
+            <span class="count">
+                3
+            </span>
+        </a>
+    </div>
+</aside>
+            
+                    <div class="sticky-area">
+                
+                
+  <aside id="krw-categories" class="widget widget-kratos-categories clearfix">
+    <h4 class="widget-title"><i class="fa fa-folder"></i>分類目錄</h4>
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/yukicoder/">yukicoder</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E9%9B%9C%E9%A0%85/">雜項</a><span class="category-list-count">1</span></li></ul>
+  </aside>
+
+
+            
+                
+  <aside id="krw-tags" class="widget widget-kratos-tags clearfix">
+    <h4 class="widget-title"><i class="fa fa-tags"></i>標籤聚合</h4>
+      <div class="tag-clouds">
+        <a href="/tags/bit/" style="font-size: 0.6em;">bit</a> <a href="/tags/dp/" style="font-size: 0.6em;">dp</a> <a href="/tags/yukicoder/" style="font-size: 0.8em;">yukicoder</a>
+      </div>
+  </aside>
+
+            
+                
+  <aside id="krw-posts" class="widget widget-kratos-posts">
+  <h4 class="widget-title"><i class="fa fa-file"></i>最新文章</h4>
+  <div class="tab-content">
+      <ul class="list-group">
+        
+        
+          
+          
+            <a class="list-group-item" href="/2022/11/14/test/2022.11.14-test/"><i class="fa  fa-book"></i> 網站測試</a>
+            
+          
+        
+          
+          
+            <a class="list-group-item" href="/2022/10/19/yukicoder/yukicoder2082/"><i class="fa  fa-book"></i> yukicoder No.2082 AND OR XOR 解題心得</a>
+            
+          
+        
+          
+          
+            <a class="list-group-item" href="/2022/10/18/yukicoder/yukicoder2101/"><i class="fa  fa-book"></i> yukicoder No.2101 [Cherry Alpha N] ずっとこの数列だったらいいのに 解題心得</a>
+            
+          
+        
+      </ul>
+  </div>
+  </aside>
+
+            
+    </div>
+</section>
+        
+        </div>
+    </div>
+</div>
+<footer>
+    <div id="footer"  >
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6 col-md-offset-3 footer-list text-center">
+                    <ul class="kratos-social-icons">
+                        
+                        
+                        
+                        <li><a target="_blank" rel="nofollow" href="https://twitter.com/chi_guai"><i class="fa fa-twitter"></i></a></li>
+                        
+                        
+                        
+                        <li><a target="_blank" rel="nofollow" href="https://github.com/Ststone1687"><i class="fa fa-github"></i></a></li>
+                        
+                    </ul>
+                    <ul class="kratos-copyright">
+                        <div>
+                            <li>&copy; 2022 Ststone的廢文專區 版權所有.</li>
+                            <li>本站已運行<span id="span_dt">Loading...</span></li>
+                        </div>
+                        <div>
+                            <li>Theme <a href="https://github.com/Candinya/Kratos-Rebirth" target="_blank">Kratos:Rebirth</a></li>
+                            <li>Site built with&nbsp;<i class="fa fa-heart throb" style="color:#d43f57"></i>&nbsp;by Ststone.</li>
+                        </div>
+                        <div>
+                            <li>Powered by <a href="https://hexo.io" target="_blank" rel="nofollow">Hexo</a></li>
+                            <li>Hosted on <a href="https://github.io" target="_blank">Github Pages</a></li>
+                        </div>
+                        <div>
+                            
+                            
+                        </div>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="kr-tool text-center">
+            <div class="tool">
+                
+                    <div class="box search-box">
+                        <a href="/search/">
+                            <span class="fa fa-search"></span>
+                        </a>
+                    </div>
+                
+                
+                    <div class="box theme-box" id="darkmode-switch">
+                        <span class="fa fa-adjust"></span>
+                    </div>
+                
+                
+            </div>
+            <div class="box gotop-box">
+                <span class="fa fa-chevron-up"></span>
+            </div>
+        </div>
+    </div>
+</footer>
+</div>
+</div>
+
+        <script defer src="/vendors/bootstrap@3.3.4/dist/js/bootstrap.min.js"></script>
+<script defer src="/vendors/nprogress@0.2.0/nprogress.js"></script>
+<script>
+    if (!window.kr) {
+        window.kr = {};
+    }
+    window.kr.notMobile = (!(navigator.userAgent.match(/(phone|pad|pod|iPhone|iPod|ios|iPad|Android|Mobile|BlackBerry|IEMobile|MQQBrowser|JUC|Fennec|wOSBrowser|BrowserNG|WebOS|Symbian|Windows Phone)/i)));
+    window.kr.siteRoot = "/";
+</script>
+
+
+    <script async src="/js/candy.min.js"></script>
+
+
+
+
+    <script defer src="/vendors/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js"></script>
+
+<script defer src="/vendors/clipboard@2.0.6/dist/clipboard.min.js"></script>
+<script defer src="/js/kratosr.min.js"></script>
+<script defer src="/js/pjax.min.js"></script>
+
+
+
+<!-- Extra support for third-party plguins  -->
+
+
+    </body>
+</html>
