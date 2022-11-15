@@ -240,7 +240,7 @@ interface DeprecatedValineOptions {
 }
 interface WalineOptions extends DeprecatedValineOptions {
     /**
-     * Waline 的初始化挂载器。必须是一个有效的 **CSS 选择器**
+     * Waline 的初始化挂载器。必须是一個有效的 **CSS 选择器**
      *
      * The DOM element to be mounted on initialization. It must be a valid **CSS selector string**.
      */
@@ -252,9 +252,9 @@ interface WalineOptions extends DeprecatedValineOptions {
      */
     serverURL: string;
     /**
-     * 评论字数限制。填入单个数字时为最大字数限制
+     * 评论字数限制。填入单個数字時为最大字数限制
      *
-     * @more 设置为 `0` 时无限制
+     * @more 设置为 `0` 時无限制
      *
      * Comment word s limit. When a single number is filled in, it 's the maximum number of comment words.
      *
@@ -272,7 +272,7 @@ interface WalineOptions extends DeprecatedValineOptions {
      * - `window.location.href`
      * - 自定义
      *
-     * > I. 请保证每个 _文章页_ 路径的唯一性，否则可能会出现不同 _文章页_ 下加载相同评论列表的情况。
+     * > I. 请保证每個 _文章页_ 路径的唯一性，否则可能会出现不同 _文章页_ 下加载相同评论列表的情况。
      * >
      * > II. 如果值为 `window.location.href`，可能会出现随便加 _不同参数_ 进入该页面，而被判断成新页面的情况。
      *
@@ -368,7 +368,7 @@ interface WalineOptions extends DeprecatedValineOptions {
     /**
      * 是否启用暗黑模式适配
      *
-     * @more 设置 `'auto'` 会根据设备暗黑模式自适应。填入 CSS 选择器会在对应选择器生效时启用夜间模式。
+     * @more 设置 `'auto'` 会根据设备暗黑模式自适应。填入 CSS 选择器会在对应选择器生效時启用夜间模式。
      *
      * Whether to enable darkmode support
      *
@@ -392,7 +392,7 @@ interface WalineOptions extends DeprecatedValineOptions {
     /**
      * 自定义图片上传方法，方便更好的存储图片
      *
-     * 方法执行时会将图片对象传入。
+     * 方法执行時会将图片对象传入。
      *
      * Custom image upload callback to manage picture by yourself.
      *

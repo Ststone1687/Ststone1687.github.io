@@ -17705,7 +17705,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;//     (c) 2012 
 /* 262 */
 /***/ (function(module, exports) {
 
-module.exports = {"init":"Gitalk 加载中 ...","no-found-related":"未找到相关的 %{link} 进行评论","please-contact":"请联系 %{user} 初始化创建","init-issue":"初始化 Issue","leave-a-comment":"说点什么","preview":"预览","edit":"编辑","comment":"评论","support-markdown":"支持 Markdown 语法","login-with-github":"使用 GitHub 登录","first-comment-person":"来做第一个留言的人吧！","commented":"发表于","load-more":"加载更多","counts":"%{counts} 条评论","sort-asc":"从旧到新排序","sort-desc":"从新到旧排序","logout":"注销","anonymous":"未登录用户"}
+module.exports = {"init":"Gitalk 加载中 ...","no-found-related":"未找到相关的 %{link} 进行评论","please-contact":"请联系 %{user} 初始化创建","init-issue":"初始化 Issue","leave-a-comment":"说点什么","preview":"预览","edit":"编辑","comment":"评论","support-markdown":"支持 Markdown 语法","login-with-github":"使用 GitHub 登录","first-comment-person":"来做第一個留言的人吧！","commented":"发表于","load-more":"加载更多","counts":"%{counts} 条评论","sort-asc":"从旧到新排序","sort-desc":"从新到旧排序","logout":"注销","anonymous":"未登录用户"}
 
 /***/ }),
 /* 263 */
@@ -61468,32 +61468,32 @@ var formatDistanceLocale = {
     other: '{{count}} 分钟'
   },
   xHours: {
-    one: '1 小时',
-    other: '{{count}} 小时'
+    one: '1 小時',
+    other: '{{count}} 小時'
   },
   aboutXHours: {
-    one: '大约 1 小时',
-    other: '大约 {{count}} 小时'
+    one: '大约 1 小時',
+    other: '大约 {{count}} 小時'
   },
   xDays: {
     one: '1 天',
     other: '{{count}} 天'
   },
   aboutXWeeks: {
-    one: '大约 1 个星期',
-    other: '大约 {{count}} 个星期'
+    one: '大约 1 個星期',
+    other: '大约 {{count}} 個星期'
   },
   xWeeks: {
-    one: '1 个星期',
-    other: '{{count}} 个星期'
+    one: '1 個星期',
+    other: '{{count}} 個星期'
   },
   aboutXMonths: {
-    one: '大约 1 个月',
-    other: '大约 {{count}} 个月'
+    one: '大约 1 個月',
+    other: '大约 {{count}} 個月'
   },
   xMonths: {
-    one: '1 个月',
-    other: '{{count}} 个月'
+    one: '1 個月',
+    other: '{{count}} 個月'
   },
   aboutXYears: {
     one: '大约 1 年',
@@ -61589,10 +61589,10 @@ function checkWeek(_date, _baseDate, _options, baseFormat) {
   if (__WEBPACK_IMPORTED_MODULE_0__lib_isSameUTCWeek_index_js__["a" /* default */](_date, _baseDate, _options)) {
     return baseFormat; // in same week
   } else if (_date.getTime() > _baseDate.getTime()) {
-    return "'下个'" + baseFormat; // in next week
+    return "'下個'" + baseFormat; // in next week
   }
 
-  return "'上个'" + baseFormat; // in last week
+  return "'上個'" + baseFormat; // in last week
 }
 
 var formatRelativeLocale = {
@@ -61727,7 +61727,7 @@ function ordinalNumber(dirtyNumber, dirtyOptions) {
       return number.toString() + '日';
 
     case 'hour':
-      return number.toString() + '时';
+      return number.toString() + '時';
 
     case 'minute':
       return number.toString() + '分';
@@ -61779,7 +61779,7 @@ var localize = {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__lib_buildMatchFn_index_js__ = __webpack_require__(5);
 
 
-var matchOrdinalNumberPattern = /^(第\s*)?\d+(日|时|分|秒)?/i;
+var matchOrdinalNumberPattern = /^(第\s*)?\d+(日|時|分|秒)?/i;
 var parseOrdinalNumberPattern = /\d+/i;
 var matchEraPatterns = {
   narrow: /^(前)/i,
@@ -61953,12 +61953,12 @@ var formatDistanceLocale = {
     other: '{{count}} 天'
   },
   aboutXWeeks: {
-    one: '大約 1 个星期',
-    other: '大約 {{count}} 个星期'
+    one: '大約 1 個星期',
+    other: '大約 {{count}} 個星期'
   },
   xWeeks: {
-    one: '1 个星期',
-    other: '{{count}} 个星期'
+    one: '1 個星期',
+    other: '{{count}} 個星期'
   },
   aboutXMonths: {
     one: '大約 1 個月',

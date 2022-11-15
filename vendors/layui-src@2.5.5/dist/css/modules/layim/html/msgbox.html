@@ -28,7 +28,7 @@
 <ul class="layim-msgbox" id="LAY_view"></ul>
 
 <div style="margin: 0 15px;">
-  <blockquote class="layui-elem-quote">注意：这些都是模拟数据，实际使用时，需将其中的模拟接口改为你的项目真实接口。
+  <blockquote class="layui-elem-quote">注意：这些都是模拟数据，实际使用時，需将其中的模拟接口改为你的项目真实接口。
   <br>该模版文件所在目录（相对于layui.js）：/css/modules/layim/html/msgbox.html</blockquote>
 </div>
 
@@ -74,12 +74,12 @@ layui.use(['layim', 'flow'], function(){
   ,$ = layui.jquery
   ,flow = layui.flow;
 
-  var cache = {}; //用于临时记录请求到的数据
+  var cache = {}; //用于临時记录请求到的数据
 
   //请求消息
   var renderMsg = function(page, callback){
     
-    //实际部署时，请将下述 getmsg.json 改为你的接口地址
+    //实际部署時，请将下述 getmsg.json 改为你的接口地址
     
     $.get('getmsg.json', {
       page: page || 1
@@ -150,7 +150,7 @@ layui.use(['layim', 'flow'], function(){
           othis.parent().html('已同意');
         
         
-          //实际部署时，请开启下述注释，并改成你的接口地址
+          //实际部署時，请开启下述注释，并改成你的接口地址
           /*
           $.post('/im/agreeFriend', {
             uid: uid //对方用户ID
