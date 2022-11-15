@@ -1,3 +1,6 @@
 [submodule "themes/Kratos-Rebirth"]
 	path = themes/Kratos-Rebirth
 	url = https://github.com/Ststone1687/Kratos-Rebirth.git
+[submodule "themes/kratos"]
+	path = themes/kratos
+	url = https://github.com/Ststone1687/Kratos-Rebirth.git
