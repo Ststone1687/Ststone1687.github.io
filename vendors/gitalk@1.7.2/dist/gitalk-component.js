@@ -57943,58 +57943,58 @@ var formatDistanceLocale = {
     one: '1 秒',
     other: '{{count}} 秒'
   },
-  halfAMinute: '半分钟',
+  halfAMinute: '半分鐘',
   lessThanXMinutes: {
-    one: '不到 1 分钟',
-    other: '不到 {{count}} 分钟'
+    one: '不到 1 分鐘',
+    other: '不到 {{count}} 分鐘'
   },
   xMinutes: {
-    one: '1 分钟',
-    other: '{{count}} 分钟'
+    one: '1 分鐘',
+    other: '{{count}} 分鐘'
   },
   xHours: {
-    one: '1 小时',
-    other: '{{count}} 小时'
+    one: '1 小時',
+    other: '{{count}} 小時'
   },
   aboutXHours: {
-    one: '大约 1 小时',
-    other: '大约 {{count}} 小时'
+    one: '大约 1 小時',
+    other: '大约 {{count}} 小時'
   },
   xDays: {
     one: '1 天',
     other: '{{count}} 天'
   },
   aboutXWeeks: {
-    one: '大约 1 个星期',
-    other: '大约 {{count}} 个星期'
+    one: '大约 1 個星期',
+    other: '大约 {{count}} 個星期'
   },
   xWeeks: {
-    one: '1 个星期',
-    other: '{{count}} 个星期'
+    one: '1 個星期',
+    other: '{{count}} 個星期'
   },
   aboutXMonths: {
-    one: '大约 1 个月',
-    other: '大约 {{count}} 个月'
+    one: '大約 1 個月',
+    other: '大約 {{count}} 個月'
   },
   xMonths: {
-    one: '1 个月',
-    other: '{{count}} 个月'
+    one: '1 個月',
+    other: '{{count}} 個月'
   },
   aboutXYears: {
-    one: '大约 1 年',
-    other: '大约 {{count}} 年'
+    one: '大約 1 年',
+    other: '大約 {{count}} 年'
   },
   xYears: {
     one: '1 年',
     other: '{{count}} 年'
   },
   overXYears: {
-    one: '超过 1 年',
-    other: '超过 {{count}} 年'
+    one: '超過 1 年',
+    other: '超過 {{count}} 年'
   },
   almostXYears: {
-    one: '将近 1 年',
-    other: '将近 {{count}} 年'
+    one: '將近 1 年',
+    other: '將近 {{count}} 年'
   }
 };
 function formatDistance(token, count, options) {
@@ -58074,10 +58074,10 @@ function checkWeek(_date, _baseDate, _options, baseFormat) {
   if (__WEBPACK_IMPORTED_MODULE_0__lib_isSameUTCWeek_index_js__["a" /* default */](_date, _baseDate, _options)) {
     return baseFormat; // in same week
   } else if (_date.getTime() > _baseDate.getTime()) {
-    return "'下个'" + baseFormat; // in next week
+    return "'下個'" + baseFormat; // in next week
   }
 
-  return "'上个'" + baseFormat; // in last week
+  return "'上個'" + baseFormat; // in last week
 }
 
 var formatRelativeLocale = {
