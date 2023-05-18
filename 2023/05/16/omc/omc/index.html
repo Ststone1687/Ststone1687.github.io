@@ -25,7 +25,7 @@
 <meta property="og:locale" content="zh_TW">
 <meta property="og:image" content="http://example.com/2023/05/16/omc/omc/https:/media.discordapp.net/attachments/1042033886001115166/1108657990917173248/OnlineMathContestLogo.png?width=662&height=662">
 <meta property="article:published_time" content="2023-05-15T16:00:00.000Z">
-<meta property="article:modified_time" content="2023-05-18T07:31:09.290Z">
+<meta property="article:modified_time" content="2023-05-18T07:45:12.992Z">
 <meta property="article:author" content="Ststone">
 <meta property="article:tag" content="OMC">
 <meta name="twitter:card" content="summary">
@@ -218,7 +218,7 @@
                     <i class="fa fa-edit"></i> 
                     
                     
-                        ~3.02K
+                        ~3.03K
                     
                     字
                 </li>
@@ -268,7 +268,7 @@
 <p>又是一題感覺寫程式跑就會很快的題目，感覺dfs下去不會爆。</p>
 <p>這題我寫了差不多30分鐘，雖然有超過一半的時間都是因為我在耍智障而浪費掉的。</p>
 <p>看完題目後，我馬上先算了差值為 $1$ 到 $9$ 的方法數分別有幾種（從這裡就錯了QQ），然後發現了差值為 $i$ 的方法數有 $(20-2i)$ 種。然後看起來答案應該會是：</p>
-<p>差值為 $1$ 的方法數 $+$ 差值為 $2$ 的方法數 $+$ $…$ $+$ 差值為 $9$ 的方法數 $+$ 差值為 $1$ 的方法數 $\times$ 差值為 $2$ 的方法數 $+$ $…$  差值為 $1$ 的方法數 $\times$ 差值為 $2$ 的方法數 $\times … \times$ 差值為 $9$ 的方法數</p>
+<p>差值為 $1$ 的方法數 $+$ 差值為 $2$ 的方法數 $+$ $…$ $+$ 差值為 $9$ 的方法數 $+$ 差值為 $1$ 的方法數 $\times$ 差值為 $2$ 的方法數 $+$ $…$  $+$ 差值為 $1$ 的方法數 $\times$ 差值為 $2$ 的方法數 $\times … \times$ 差值為 $9$ 的方法數</p>
 <p>之類的。看起來就可以用前綴和之類的怪怪方法算，但是當然我不能寫程式下去跑QQ。又想了幾分鐘後，我才發現好像可以用 $(a+1)$ $\times$ $(b+1)$ $\times$ $(c+1)$ $&#x3D;$ $a+b+c+ab+bc+ac+abc+1$ 的方法算，於是我就寫下了：</p>
 <p>$(2+1)$ $\times$ $(4+1)$ $\times$ $(6+1)$ $\times$ $(8+1)$ $\times$ $(10+1)$ $\times$ $(12+1)$ $\times$ $(14+1)$ $\times$ $(16+1)$ $\times$ $(18+1)$ $-1$ $&#x3D;$ $654729074$</p>
 <p>然後就吃WA了。</p>
@@ -297,7 +297,7 @@
                     <a class="tag-none-link" href="/tags/OMC/" rel="tag">OMC</a>
                 </div>
                 <div class="pull-date">
-                    <time datetime="2023-05-18T07:31:09.290Z" itemprop="dateModified">最後編輯：2023-05-18</time>
+                    <time datetime="2023-05-18T07:45:12.992Z" itemprop="dateModified">最後編輯：2023-05-18</time>
                 </div>
             </div>
         </footer>
